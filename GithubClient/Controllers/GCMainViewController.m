@@ -8,7 +8,7 @@
 
 #import "GCMainViewController.h"
 
-#import "StarsTableViewController.h"
+#import "GCStarsTableViewController.h"
 
 @interface GCMainViewController ()
 
@@ -18,6 +18,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // Add child VCs
+    [self addChildViewControllers];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -28,7 +31,7 @@
 - (void)addChildViewControllers {
     
     // Stars VC
-    StarsTableViewController *starsTVC = [[StarsTableViewController alloc] init];
+    GCStarsTableViewController *starsTVC = [[GCStarsTableViewController alloc] init];
     UINavigationController *starsNC = [[UINavigationController alloc] initWithRootViewController:starsTVC];
     starsNC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Stars" image:nil tag:0];
     [self addChildViewController:starsNC];

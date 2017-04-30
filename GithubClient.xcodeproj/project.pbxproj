@@ -14,7 +14,10 @@
 		A25133A11EB58F90002CFDCE /* GithubClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A25133A01EB58F90002CFDCE /* GithubClientTests.m */; };
 		A25133AC1EB58F90002CFDCE /* GithubClientUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A25133AB1EB58F90002CFDCE /* GithubClientUITests.m */; };
 		A25133C31EB59797002CFDCE /* GCMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A25133C21EB59797002CFDCE /* GCMainViewController.m */; };
-		A25133C61EB59C92002CFDCE /* StarsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A25133C51EB59C92002CFDCE /* StarsTableViewController.m */; };
+		A25133C61EB59C92002CFDCE /* GCStarsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A25133C51EB59C92002CFDCE /* GCStarsTableViewController.m */; };
+		A25133C91EB5A8FC002CFDCE /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A25133C81EB5A8FC002CFDCE /* SafariServices.framework */; };
+		A25133CE1EB5C158002CFDCE /* AccountService.m in Sources */ = {isa = PBXBuildFile; fileRef = A25133CD1EB5C158002CFDCE /* AccountService.m */; };
+		A25133D11EB5DBEC002CFDCE /* GCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A25133D01EB5DBEC002CFDCE /* GCLoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,8 +53,14 @@
 		A25133AD1EB58F90002CFDCE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A25133C11EB59797002CFDCE /* GCMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCMainViewController.h; sourceTree = "<group>"; };
 		A25133C21EB59797002CFDCE /* GCMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCMainViewController.m; sourceTree = "<group>"; };
-		A25133C41EB59C92002CFDCE /* StarsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarsTableViewController.h; sourceTree = "<group>"; };
-		A25133C51EB59C92002CFDCE /* StarsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarsTableViewController.m; sourceTree = "<group>"; };
+		A25133C41EB59C92002CFDCE /* GCStarsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCStarsTableViewController.h; sourceTree = "<group>"; };
+		A25133C51EB59C92002CFDCE /* GCStarsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCStarsTableViewController.m; sourceTree = "<group>"; };
+		A25133C81EB5A8FC002CFDCE /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		A25133CC1EB5C158002CFDCE /* AccountService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountService.h; sourceTree = "<group>"; };
+		A25133CD1EB5C158002CFDCE /* AccountService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountService.m; sourceTree = "<group>"; };
+		A25133CF1EB5DBEC002CFDCE /* GCLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCLoginViewController.h; sourceTree = "<group>"; };
+		A25133D01EB5DBEC002CFDCE /* GCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCLoginViewController.m; sourceTree = "<group>"; };
+		A25133D31EB5E81F002CFDCE /* GCGithubConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCGithubConstant.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A25133C91EB5A8FC002CFDCE /* SafariServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +96,7 @@
 				A251339F1EB58F90002CFDCE /* GithubClientTests */,
 				A25133AA1EB58F90002CFDCE /* GithubClientUITests */,
 				A25133841EB58F90002CFDCE /* Products */,
+				A25133C71EB5A8FC002CFDCE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,6 +113,8 @@
 		A25133851EB58F90002CFDCE /* GithubClient */ = {
 			isa = PBXGroup;
 			children = (
+				A25133D21EB5E7D1002CFDCE /* Constants */,
+				A25133CB1EB5C14B002CFDCE /* Services */,
 				A25133BC1EB5928F002CFDCE /* Controllers */,
 				A25133BD1EB5928F002CFDCE /* Helpers */,
 				A25133BE1EB5928F002CFDCE /* Models */,
@@ -148,8 +161,10 @@
 			children = (
 				A25133C11EB59797002CFDCE /* GCMainViewController.h */,
 				A25133C21EB59797002CFDCE /* GCMainViewController.m */,
-				A25133C41EB59C92002CFDCE /* StarsTableViewController.h */,
-				A25133C51EB59C92002CFDCE /* StarsTableViewController.m */,
+				A25133C41EB59C92002CFDCE /* GCStarsTableViewController.h */,
+				A25133C51EB59C92002CFDCE /* GCStarsTableViewController.m */,
+				A25133CF1EB5DBEC002CFDCE /* GCLoginViewController.h */,
+				A25133D01EB5DBEC002CFDCE /* GCLoginViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -180,6 +195,31 @@
 			children = (
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		A25133C71EB5A8FC002CFDCE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A25133C81EB5A8FC002CFDCE /* SafariServices.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A25133CB1EB5C14B002CFDCE /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A25133CC1EB5C158002CFDCE /* AccountService.h */,
+				A25133CD1EB5C158002CFDCE /* AccountService.m */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A25133D21EB5E7D1002CFDCE /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				A25133D31EB5E81F002CFDCE /* GCGithubConstant.h */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,8 +355,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A25133D11EB5DBEC002CFDCE /* GCLoginViewController.m in Sources */,
 				A251338B1EB58F90002CFDCE /* AppDelegate.m in Sources */,
-				A25133C61EB59C92002CFDCE /* StarsTableViewController.m in Sources */,
+				A25133C61EB59C92002CFDCE /* GCStarsTableViewController.m in Sources */,
+				A25133CE1EB5C158002CFDCE /* AccountService.m in Sources */,
 				A25133881EB58F90002CFDCE /* main.m in Sources */,
 				A25133C31EB59797002CFDCE /* GCMainViewController.m in Sources */,
 			);

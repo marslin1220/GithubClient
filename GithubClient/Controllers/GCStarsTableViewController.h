@@ -1,5 +1,5 @@
 //
-//  StarsTableViewController.h
+//  GCStarsTableViewController.h
 //  GithubClient
 //
 //  Created by Lin Cheng Lung on 30/04/2017.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StarsTableViewController : UITableViewController
+@interface GCStarsTableViewController : UITableViewController
 
 @end

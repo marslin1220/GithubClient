@@ -8,9 +8,15 @@
 
 #import "AppDelegate.h"
 
+#import "AccountService.h"
+
+// ViewControllers
 #import "GCMainViewController.h"
+#import "GCLoginViewController.h"
 
 @interface AppDelegate ()
+
+@property AccountService *accountService;
 
 @end
 
@@ -20,7 +26,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    [self presentMainViewController];
+    self.accountService = [AccountService new];
+
+    if ([self.accountService hasAuthorizedWithScope:AccountAutorizationScopeNone]) {
+        [self presentMainViewController];
+    } else {
+        [self presentLoginViewController];
+    }
 
     return YES;
 }
@@ -52,12 +64,20 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-- (void)presentMainViewController {
-    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    GCMainViewController *mainViewController = [[GCMainViewController alloc] init];
-    self.window.rootViewController = mainViewController;
-    [self.window makeKeyAndVisible];
+#pragma mark - Private Methods
+
+- (void)presentLoginViewController {
+    [self presentRootViewController:[[GCLoginViewController alloc] init]];
 }
 
+- (void)presentMainViewController {
+    [self presentRootViewController:[[GCMainViewController alloc] init]];
+}
+
+- (void)presentRootViewController:(UIViewController *)rootViewController {
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.rootViewController = rootViewController;
+    [self.window makeKeyAndVisible];
+}
 
 @end

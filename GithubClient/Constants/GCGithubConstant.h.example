@@ -1,0 +1,17 @@
+//
+//  GCGithubConstant.h
+//  GithubClient
+//
+//  Created by Lin Cheng Lung on 30/04/2017.
+//  Copyright © 2017 Lin Cheng Lung. All rights reserved.
+//
+
+#ifndef GCGithubConstant_h
+#define GCGithubConstant_h
+
+static NSString *const kGithubClientID = @"YOUR CLIENT ID HERE";
+static NSString *const kGithubClientSecret = @"YOUR CLIENT SECRET HERE";
+static NSString *const kGithubRedirectURI = @"YOUR REDIRECT URI HERE";
+static NSString *const kGithubAuthorizeBaseURI = @"https://github.com/login/oauth/authorize";
+
+#endif /* GCGithubConstant_h */

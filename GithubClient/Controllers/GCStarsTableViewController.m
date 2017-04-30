@@ -1,18 +1,18 @@
 //
-//  StarsTableViewController.m
+//  GCStarsTableViewController.m
 //  GithubClient
 //
 //  Created by Lin Cheng Lung on 30/04/2017.
 //  Copyright © 2017 Lin Cheng Lung. All rights reserved.
 //
 
-#import "StarsTableViewController.h"
+#import "GCStarsTableViewController.h"
 
-@interface StarsTableViewController ()
+@interface GCStarsTableViewController ()
 
 @end
 
-@implementation StarsTableViewController
+@implementation GCStarsTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
