@@ -12,9 +12,23 @@
 
 @interface GCLoginViewController ()
 
+@property AccountService *accountService;
+
 @end
 
 @implementation GCLoginViewController
+
+- (id)initWithAccountService:(AccountService *)accountService {
+
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    self.accountService = accountService;
+
+    return self;
+}
 
 - (void)loadView {
     [super loadView];
@@ -67,8 +81,7 @@
 }
 
 - (void)didPressLoginButton {
-    AccountService *accountService = [AccountService new];
-    [accountService authorizeWithScope:AccountAutorizationScopeNone];
+    [self.accountService authorizeWithScope:AccountAutorizationScopeNone];
 }
 
 @end

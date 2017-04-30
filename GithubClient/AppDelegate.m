@@ -31,7 +31,7 @@
     if ([self.accountService hasAuthorizedWithScope:AccountAutorizationScopeNone]) {
         [self presentMainViewController];
     } else {
-        [self presentLoginViewController];
+        [self presentLoginViewControllerWithAccountService:self.accountService];
     }
 
     return YES;
@@ -66,8 +66,8 @@
 
 #pragma mark - Private Methods
 
-- (void)presentLoginViewController {
-    [self presentRootViewController:[[GCLoginViewController alloc] init]];
+- (void)presentLoginViewControllerWithAccountService:(AccountService *)accountService {
+    [self presentRootViewController:[[GCLoginViewController alloc] initWithAccountService:accountService]];
 }
 
 - (void)presentMainViewController {
