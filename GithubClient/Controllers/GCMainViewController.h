@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  GCMainViewController.h
 //  GithubClient
 //
 //  Created by Lin Cheng Lung on 30/04/2017.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface GCMainViewController : UITabBarController
 
 @end
-

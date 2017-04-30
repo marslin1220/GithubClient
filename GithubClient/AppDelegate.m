@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#import "GCMainViewController.h"
+
 @interface AppDelegate ()
 
 @end
@@ -17,6 +19,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [self presentMainViewController];
+
     return YES;
 }
 
@@ -45,6 +50,13 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)presentMainViewController {
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    GCMainViewController *mainViewController = [[GCMainViewController alloc] init];
+    self.window.rootViewController = mainViewController;
+    [self.window makeKeyAndVisible];
 }
 
 
