@@ -9,6 +9,7 @@
 #import <SafariServices/SafariServices.h>
 
 #import "AccountService.h"
+#import <AFOAuthCredential.h>
 
 // Constants
 #import "GCGithubConstant.h"
@@ -29,7 +30,7 @@
 
     NSURL *baseURL = [NSURL URLWithString:kGithubAuthorizeBaseURI];
     self.oauthState = arc4random_uniform(RAND_MAX);
-    NSString *queryString = [NSString stringWithFormat:@"?client_id=%@&redirect_uri=%@&state=%d&allow_signup=%@", kGithubClientID, kGithubRedirectURI, self.oauthState, @"false"];
+    NSString *queryString = [NSString stringWithFormat:@"/login/oauth/authorize?client_id=%@&redirect_uri=%@&state=%d&allow_signup=%@", kGithubClientID, kGithubRedirectURI, self.oauthState, @"false"];
     NSURL *oauthURL = [NSURL URLWithString:queryString relativeToURL:baseURL];
 
     SFSafariViewController *safariVC = [[SFSafariViewController alloc] initWithURL:oauthURL];
@@ -51,6 +52,12 @@
         if ([url.host isEqualToString:redirectURI.host]) {
             NSError *error = nil;
             NSString *authorizationCode = [self authorizationCodeWithRedirectURI:url error:&error];
+            
+            if (error) {
+                return NO;
+            }
+            
+            [self authentcateWithAuthorizationCode:authorizationCode];
             
             return YES;
         }
@@ -82,6 +89,34 @@
     }
     
     return authorizationCode;
+}
+
+- (void)authentcateWithAuthorizationCode:(NSString *)authorizationCode {
+    
+    NSURLSessionTask *sesstionTask =
+    [self.oauth2Manager authenticateUsingOAuthWithURLString:@"/login/oauth/access_token"
+                                                       code:authorizationCode
+                                                redirectURI:kGithubRedirectURI
+                                                    success:^(AFOAuthCredential * _Nonnull credential) {
+                                                        BOOL saveResult = [AFOAuthCredential storeCredential:credential
+                                                                                              withIdentifier:@"githubclient.marstudio.com"];
+                                                    } failure:^(NSError * _Nonnull error) {
+                                                        //TODO failure
+                                                    }];
+    [sesstionTask resume];
+    
+}
+
+#pragma mark - Assessors
+
+- (AFOAuth2Manager *)oauth2Manager {
+    if (nil == _oauth2Manager) {
+        _oauth2Manager = [AFOAuth2Manager managerWithBaseURL:[NSURL URLWithString:kGithubAuthorizeBaseURI]
+                                                    clientID:kGithubClientID
+                                                      secret:kGithubClientSecret];
+    }
+    
+    return _oauth2Manager;
 }
 
 @end

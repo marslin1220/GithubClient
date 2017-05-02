@@ -8,12 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <AFOAuth2Manager.h>
 
 typedef NS_OPTIONS(NSInteger, AccountAutorizationScope) {
     AccountAutorizationScopeNone
 };
 
 @interface AccountService : NSObject
+
+@property (nonatomic) AFOAuth2Manager *oauth2Manager;
 
 - (BOOL)hasAuthorizedWithScope:(AccountAutorizationScope)authorizationScope;
 - (void)authorizeWithScope:(AccountAutorizationScope)authorizationScope;
