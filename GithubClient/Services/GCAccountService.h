@@ -10,6 +10,13 @@
 #import <UIKit/UIKit.h>
 #import <AFOAuth2Manager.h>
 
+@protocol GCAccountServiceLoginDelegate <NSObject>
+
+- (void)userDidLoginSuccess;
+- (void)userDidLoginFailedWithError:(NSError *)error;
+
+@end
+
 typedef NS_OPTIONS(NSInteger, AccountAutorizationScope) {
     AccountAutorizationScopeNone
 };
@@ -17,6 +24,7 @@ typedef NS_OPTIONS(NSInteger, AccountAutorizationScope) {
 @interface GCAccountService : NSObject
 
 @property (nonatomic) AFOAuth2Manager *oauth2Manager;
+@property (nonatomic, weak) id <GCAccountServiceLoginDelegate> delegate;
 
 - (BOOL)hasAuthorizedWithScope:(AccountAutorizationScope)authorizationScope;
 - (void)authorizeWithScope:(AccountAutorizationScope)authorizationScope;

@@ -50,10 +50,9 @@
         NSURL *redirectURI = [NSURL URLWithString:kGithubRedirectURI];
 
         if ([url.host isEqualToString:redirectURI.host]) {
-            NSError *error = nil;
-            NSString *authorizationCode = [self authorizationCodeWithRedirectURI:url error:&error];
+            NSString *authorizationCode = [self authorizationCodeWithRedirectURI:url];
             
-            if (error) {
+            if (nil == authorizationCode) {
                 return NO;
             }
             
@@ -68,11 +67,10 @@
 
 #pragma mark - Private Methods
 
-- (NSString *)authorizationCodeWithRedirectURI:(NSURL *)redirectURI error:(NSError **)error {
+- (NSString *)authorizationCodeWithRedirectURI:(NSURL *)redirectURI {
     //TODO: check redirect URI pattern
-    //TODO: handling error
     
-    NSString *authorizationCode = @"";
+    NSString *authorizationCode = nil;
     
     NSArray *queryStrings = [redirectURI.query componentsSeparatedByString:@"&"];
     
@@ -88,6 +86,16 @@
         }
     }
     
+    if (nil == authorizationCode) {
+        NSDictionary *userInfo = @{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"Get authorization code failed with URI: %@.", redirectURI],
+                                   NSLocalizedRecoverySuggestionErrorKey:@"Try again.",
+                                   NSLocalizedFailureReasonErrorKey: @"Parse redirect URI failed"};
+        NSError *error = [NSError errorWithDomain:[[NSBundle mainBundle] bundleIdentifier]
+                                             code:4002
+                                         userInfo:userInfo];
+        [self. delegate userDidLoginFailedWithError:error];
+    }
+    
     return authorizationCode;
 }
 
@@ -100,8 +108,21 @@
                                                     success:^(AFOAuthCredential * _Nonnull credential) {
                                                         BOOL saveResult = [AFOAuthCredential storeCredential:credential
                                                                                               withIdentifier:@"githubclient.marstudio.com"];
+                                                        if (saveResult) {
+                                                            [self.delegate userDidLoginSuccess];
+                                                        } else {
+                                                            NSDictionary *userInfo = @{NSLocalizedDescriptionKey: @"Save credential failed.",
+                                                                                       NSLocalizedRecoverySuggestionErrorKey: @"Try again.",
+                                                                                       NSLocalizedFailureReasonErrorKey: @"No idea."};
+                                                            
+                                                            NSError *error = [NSError errorWithDomain:[[NSBundle mainBundle] bundleIdentifier]
+                                                                                                 code:4001
+                                                                                             userInfo:userInfo];
+                                                            
+                                                            [self.delegate userDidLoginFailedWithError:error];
+                                                        }
                                                     } failure:^(NSError * _Nonnull error) {
-                                                        //TODO failure
+                                                        [self.delegate userDidLoginFailedWithError:error];
                                                     }];
     [sesstionTask resume];
     
