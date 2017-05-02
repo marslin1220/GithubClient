@@ -17,6 +17,7 @@
 @interface GCAccountService ()
 
 @property int oauthState;
+@property SFSafariViewController *safariViewController;
 
 @end
 
@@ -33,10 +34,10 @@
     NSString *queryString = [NSString stringWithFormat:@"/login/oauth/authorize?client_id=%@&redirect_uri=%@&state=%d&allow_signup=%@", kGithubClientID, kGithubRedirectURI, self.oauthState, @"false"];
     NSURL *oauthURL = [NSURL URLWithString:queryString relativeToURL:baseURL];
 
-    SFSafariViewController *safariVC = [[SFSafariViewController alloc] initWithURL:oauthURL];
+    self.safariViewController = [[SFSafariViewController alloc] initWithURL:oauthURL];
 
     id<UIApplicationDelegate> appDelegate = [[UIApplication sharedApplication] delegate];
-    [appDelegate.window.rootViewController presentViewController:safariVC animated:YES completion:nil];
+    [appDelegate.window.rootViewController presentViewController:self.safariViewController animated:YES completion:nil];
 
 }
 
@@ -109,6 +110,8 @@
                                                         BOOL saveResult = [AFOAuthCredential storeCredential:credential
                                                                                               withIdentifier:@"githubclient.marstudio.com"];
                                                         if (saveResult) {
+                                                            [self.safariViewController dismissViewControllerAnimated:YES
+                                                                                                          completion:nil];
                                                             [self.delegate userDidLoginSuccess];
                                                         } else {
                                                             NSDictionary *userInfo = @{NSLocalizedDescriptionKey: @"Save credential failed.",
