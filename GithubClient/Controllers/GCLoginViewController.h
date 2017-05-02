@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-#import "AccountService.h"
+#import "GCAccountService.h"
 
 @interface GCLoginViewController : UIViewController
 
-- (id)initWithAccountService:(AccountService *)accountService;
+- (id)initWithAccountService:(GCAccountService *)accountService;
 
 @end

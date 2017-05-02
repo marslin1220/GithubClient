@@ -18,7 +18,7 @@
 		A25133C31EB59797002CFDCE /* GCMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A25133C21EB59797002CFDCE /* GCMainViewController.m */; };
 		A25133C61EB59C92002CFDCE /* GCStarsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A25133C51EB59C92002CFDCE /* GCStarsTableViewController.m */; };
 		A25133C91EB5A8FC002CFDCE /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A25133C81EB5A8FC002CFDCE /* SafariServices.framework */; };
-		A25133CE1EB5C158002CFDCE /* AccountService.m in Sources */ = {isa = PBXBuildFile; fileRef = A25133CD1EB5C158002CFDCE /* AccountService.m */; };
+		A25133CE1EB5C158002CFDCE /* GCAccountService.m in Sources */ = {isa = PBXBuildFile; fileRef = A25133CD1EB5C158002CFDCE /* GCAccountService.m */; };
 		A25133D11EB5DBEC002CFDCE /* GCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A25133D01EB5DBEC002CFDCE /* GCLoginViewController.m */; };
 		C026E49822E9666F1661FFD2 /* libPods-GithubClientTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 409CB4603019947EE06F8A29 /* libPods-GithubClientTests.a */; };
 /* End PBXBuildFile section */
@@ -64,8 +64,8 @@
 		A25133C41EB59C92002CFDCE /* GCStarsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCStarsTableViewController.h; sourceTree = "<group>"; };
 		A25133C51EB59C92002CFDCE /* GCStarsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCStarsTableViewController.m; sourceTree = "<group>"; };
 		A25133C81EB5A8FC002CFDCE /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
-		A25133CC1EB5C158002CFDCE /* AccountService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountService.h; sourceTree = "<group>"; };
-		A25133CD1EB5C158002CFDCE /* AccountService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountService.m; sourceTree = "<group>"; };
+		A25133CC1EB5C158002CFDCE /* GCAccountService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCAccountService.h; sourceTree = "<group>"; };
+		A25133CD1EB5C158002CFDCE /* GCAccountService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCAccountService.m; sourceTree = "<group>"; };
 		A25133CF1EB5DBEC002CFDCE /* GCLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCLoginViewController.h; sourceTree = "<group>"; };
 		A25133D01EB5DBEC002CFDCE /* GCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCLoginViewController.m; sourceTree = "<group>"; };
 		A25133D31EB5E81F002CFDCE /* GCGithubConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCGithubConstant.h; sourceTree = "<group>"; };
@@ -240,8 +240,8 @@
 		A25133CB1EB5C14B002CFDCE /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				A25133CC1EB5C158002CFDCE /* AccountService.h */,
-				A25133CD1EB5C158002CFDCE /* AccountService.m */,
+				A25133CC1EB5C158002CFDCE /* GCAccountService.h */,
+				A25133CD1EB5C158002CFDCE /* GCAccountService.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -538,7 +538,7 @@
 				A25133D11EB5DBEC002CFDCE /* GCLoginViewController.m in Sources */,
 				A251338B1EB58F90002CFDCE /* AppDelegate.m in Sources */,
 				A25133C61EB59C92002CFDCE /* GCStarsTableViewController.m in Sources */,
-				A25133CE1EB5C158002CFDCE /* AccountService.m in Sources */,
+				A25133CE1EB5C158002CFDCE /* GCAccountService.m in Sources */,
 				A25133881EB58F90002CFDCE /* main.m in Sources */,
 				A25133C31EB59797002CFDCE /* GCMainViewController.m in Sources */,
 			);

@@ -6,19 +6,19 @@
 //  Copyright © 2017 Lin Cheng Lung. All rights reserved.
 //
 
-#import "AccountService.h"
+#import "GCAccountService.h"
 
 #import "GCLoginViewController.h"
 
 @interface GCLoginViewController ()
 
-@property AccountService *accountService;
+@property GCAccountService *accountService;
 
 @end
 
 @implementation GCLoginViewController
 
-- (id)initWithAccountService:(AccountService *)accountService {
+- (id)initWithAccountService:(GCAccountService *)accountService {
 
     self = [super init];
     if (!self) {

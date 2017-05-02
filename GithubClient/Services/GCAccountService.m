@@ -1,5 +1,5 @@
 //
-//  AccountService.m
+//  GCAccountService.m
 //  GithubClient
 //
 //  Created by Lin Cheng Lung on 30/04/2017.
@@ -8,19 +8,19 @@
 
 #import <SafariServices/SafariServices.h>
 
-#import "AccountService.h"
+#import "GCAccountService.h"
 #import <AFOAuthCredential.h>
 
 // Constants
 #import "GCGithubConstant.h"
 
-@interface AccountService ()
+@interface GCAccountService ()
 
 @property int oauthState;
 
 @end
 
-@implementation AccountService
+@implementation GCAccountService
 
 - (BOOL)hasAuthorizedWithScope:(AccountAutorizationScope)authorizationScope {
     return NO;

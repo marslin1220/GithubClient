@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 
-#import "AccountService.h"
+#import "GCAccountService.h"
 
 // ViewControllers
 #import "GCMainViewController.h"
@@ -16,7 +16,7 @@
 
 @interface AppDelegate ()
 
-@property AccountService *accountService;
+@property GCAccountService *accountService;
 
 @end
 
@@ -26,7 +26,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    self.accountService = [AccountService new];
+    self.accountService = [GCAccountService new];
 
     if ([self.accountService hasAuthorizedWithScope:AccountAutorizationScopeNone]) {
         [self presentMainViewController];
@@ -43,7 +43,7 @@
 
 #pragma mark - Private Methods
 
-- (void)presentLoginViewControllerWithAccountService:(AccountService *)accountService {
+- (void)presentLoginViewControllerWithAccountService:(GCAccountService *)accountService {
     [self presentRootViewController:[[GCLoginViewController alloc] initWithAccountService:accountService]];
 }
 

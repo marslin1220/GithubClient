@@ -1,5 +1,5 @@
 //
-//  AccountService.h
+//  GCAccountService.h
 //  GithubClient
 //
 //  Created by Lin Cheng Lung on 30/04/2017.
@@ -14,7 +14,7 @@ typedef NS_OPTIONS(NSInteger, AccountAutorizationScope) {
     AccountAutorizationScopeNone
 };
 
-@interface AccountService : NSObject
+@interface GCAccountService : NSObject
 
 @property (nonatomic) AFOAuth2Manager *oauth2Manager;
 
