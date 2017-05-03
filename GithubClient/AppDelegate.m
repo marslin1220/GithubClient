@@ -45,20 +45,28 @@
 #pragma mark - GCAccountServiceLoginDelegate Methods
 
 - (void)userDidLoginSuccess {
-    
+    [self presentMainViewController];
 }
 
 - (void)userDidLoginFailedWithError:(NSError *)error {
-    
+    [self presentLoginViewControllerWithAccountService:self.accountService];
 }
 
 #pragma mark - Private Methods
 
 - (void)presentLoginViewControllerWithAccountService:(GCAccountService *)accountService {
+    if ([self.window.rootViewController isKindOfClass:[GCLoginViewController class]]) {
+        return;
+    }
+
     [self presentRootViewController:[[GCLoginViewController alloc] initWithAccountService:accountService]];
 }
 
 - (void)presentMainViewController {
+    if ([self.window.rootViewController isKindOfClass:[GCMainViewController class]]) {
+        return;
+    }
+
     [self presentRootViewController:[[GCMainViewController alloc] init]];
 }
 
