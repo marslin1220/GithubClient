@@ -14,6 +14,8 @@
 // Constants
 #import "GCGithubConstant.h"
 
+static NSString *const kOAuthCredentialStorageID = @"githubclient.marstudio.com";
+
 @interface GCAccountService ()
 
 @property int oauthState;
@@ -24,7 +26,9 @@
 @implementation GCAccountService
 
 - (BOOL)hasAuthorizedWithScope:(AccountAutorizationScope)authorizationScope {
-    return NO;
+    AFOAuthCredential * credential = [AFOAuthCredential retrieveCredentialWithIdentifier:kOAuthCredentialStorageID];
+    
+    return credential ? YES : NO;
 }
 
 - (void)authorizeWithScope:(AccountAutorizationScope)authorizationScope {
@@ -108,7 +112,7 @@
                                                 redirectURI:kGithubRedirectURI
                                                     success:^(AFOAuthCredential * _Nonnull credential) {
                                                         BOOL saveResult = [AFOAuthCredential storeCredential:credential
-                                                                                              withIdentifier:@"githubclient.marstudio.com"];
+                                                                                              withIdentifier:kOAuthCredentialStorageID];
                                                         if (saveResult) {
                                                             [self.safariViewController dismissViewControllerAnimated:YES
                                                                                                           completion:nil];
